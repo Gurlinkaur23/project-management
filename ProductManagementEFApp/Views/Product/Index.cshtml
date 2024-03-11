@@ -1,0 +1,290 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+ 
+<style>
+    .table thead tr {
+        background: linear-gradient(to bottom right, rgba(221, 227, 243, 0.8), rgba(222, 227, 243, 0.8));
+        color: #333;
+        font-weight: 600;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .table thead tr:hover {
+            background: linear-gradient(to bottom right, rgba(221, 227, 243, 1), rgba(222, 227, 243, 1));
+        }
+
+    .table .tbody {
+        background: linear-gradient(to bottom right, rgba(221, 165, 178, 0.5), rgba(150, 93, 161, 0.5));
+        transition: background-color 0.3s ease-in-out;
+    }
+
+        .table .tbody tr:hover td {
+            background-color: rgba(216,151,166, 0.2);
+        }
+
+        .table .tbody a {
+            text-decoration: none;
+            color: #445eb5;
+        }
+</style>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        loadData();
+    })
+
+    function loadData() {
+        $.ajax({
+            url: "/Product/GetProducts",
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+
+                var html = '';
+
+                $.each(response, function (key, item) {
+                    html += '<tr>'
+                    html += '<td>' + item.Name + '</td>'
+                    html += '<td>' + item.Description + '</td>'
+                    html += '<td>' + item.Price + '</td>'
+                    html += '<td>' + item.Quantity + '</td>'
+                    html += '<td>' + item.Category + '</td>'
+                    html += '<td>' + item.Supplier + '</td>'
+                    html += '<td><a href="#" onclick="return getProductById(' + item.ProductID + ')" >Edit Product</a> | <a href="#" onclick="return Delete(' + item.ProductID + ')" >Delete Product</a></td>'
+                    html += '</tr>'
+                });;
+
+                $('.tbody').html(html);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        })
+    }
+
+    function Add() {
+        var productObj = {
+            Name: $('#name').val(),
+            Description: $('#description').val(),
+            Price: $('#price').val(),
+            Quantity: $('#quantity').val(),
+            Category: $('#category').val(),
+            Supplier: $('#supplier').val()
+        }
+
+        $.ajax({
+            url: "/Product/AddProduct",
+            type: "POST",
+            data: JSON.stringify(productObj),
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+
+                if (response == true) {
+                    loadData();
+                    $('#myModal').modal('hide');
+                    $('.modal-backdrop').remove();
+                }
+                else {
+                    $('#errorMessage').text('Please enter valid product details.');
+                }
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        })
+    }
+
+    function getProductById(productID) {
+        $.ajax({
+            url: "/Product/GetProductById/" + productID,
+            type: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                $('#productID').val(response.ProductID);
+                $('#name').val(response.Name);
+                $('#description').val(response.Description);
+                $('#price').val(response.Price);
+                $('#quantity').val(response.Quantity);
+                $('#category').val(response.Category);
+                $('#supplier').val(response.Supplier);
+
+                $('#myModal').modal('show');
+                $('#btnUpdate').show();
+                $('#btnAdd').hide();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        })
+    }
+
+    function Update() {
+        var productObj = {
+            ProductID: $('#productID').val(),
+            Name: $('#name').val(),
+            Description: $('#description').val(),
+            Price: $('#price').val(),
+            Quantity: $('#quantity').val(),
+            Category: $('#category').val(),
+            Supplier: $('#supplier').val()
+        }
+
+        $.ajax({
+            url: "/Product/UpdateProduct",
+            data: JSON.stringify(productObj),
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                loadData();
+                $('#myModal').modal('hide');
+                $('.modal-backdrop').remove();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        })
+    }
+
+    function Delete(productID) {
+        $.ajax({
+            url: "/Product/DeleteProduct",
+            data: JSON.stringify({ productID: productID }),
+            type: "POST",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (response) {
+                loadData();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        })
+    }
+
+    function clearTextBoxes() {
+        $('#name').val("");
+        $('#description').val("");
+        $('#price').val("");
+        $('#quantity').val("");
+        $('#category').val("");
+        $('#supplier').val("");
+        $('#myModal').modal('show');
+        $('#btnUpdate').hide();
+        $('#btnAdd').show();
+        $('#errorMessage').text('');
+    }
+
+</script>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal" onclick="clearTextBoxes()">Add new Product</button>
+
+<center>
+    <h2>Products List</h2>
+</center>
+<br />
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Category</td>
+            <td>Supplier</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody class="tbody">
+        @*Product records will be populated here*@
+    </tbody>
+</table>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Add Product</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+
+            <div class="modal-body">
+                <form>
+
+                    <input type="hidden" id="productID" />
+
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" placeholder="Product Name" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="description" placeholder="Product Description" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="price" placeholder="Product Price" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="quantity" placeholder="Product Quantity" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="category" placeholder="Product Category" />
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="supplier" placeholder="Product Supplier" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <center><p style="color:red" id="errorMessage"></p></center>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="btnAdd" onclick="return Add();">Add</button>
+                <button type="button" class="btn btn-outline-primary" id="btnUpdate" onclick="return Update();">Update</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\PM-BLL.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\PM-BLL.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\PM-DAL.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\EntityFramework.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\PM-DAL.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\PM-DAL.dll.config
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\EntityFramework.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\obj\Debug\PM-BLL.csproj.AssemblyReference.cache
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\obj\Debug\PM-BLL.csproj.CoreCompileInputs.cache
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\obj\Debug\PM-BLL.csproj.CopyComplete
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\obj\Debug\PM-BLL.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\obj\Debug\PM-BLL.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\AutoMapper.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\System.ValueTuple.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\AutoMapper.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\AutoMapper.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-BLL\bin\Debug\System.ValueTuple.xml

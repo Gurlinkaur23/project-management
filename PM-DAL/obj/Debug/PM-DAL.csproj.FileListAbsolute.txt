@@ -1,0 +1,17 @@
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\PM-DAL.dll.config
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\PM-DAL.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\PM-DAL.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\AutoMapper.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\EntityFramework.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\System.ValueTuple.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\AutoMapper.pdb
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\AutoMapper.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\EntityFramework.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\bin\Debug\System.ValueTuple.xml
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\obj\Debug\PM-DAL.csproj.AssemblyReference.cache
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\obj\Debug\PM-DAL.csproj.CoreCompileInputs.cache
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\obj\Debug\PM-DAL.csproj.CopyComplete
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\obj\Debug\PM-DAL.dll
+C:\Users\arvin\MITT\AdvancedDBConcepts\PM-DAL\obj\Debug\PM-DAL.pdb
