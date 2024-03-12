@@ -8,32 +8,60 @@
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
  
 <style>
+    /* Table Header Styles */
     .table thead tr {
-        background: linear-gradient(to bottom right, rgba(221, 227, 243, 0.8), rgba(222, 227, 243, 0.8));
-        color: #333;
+        background-color: #6c757d;
+        color: #fff;
         font-weight: 600;
-        transition: background-color 0.3s ease-in-out;
     }
 
-        .table thead tr:hover {
-            background: linear-gradient(to bottom right, rgba(221, 227, 243, 1), rgba(222, 227, 243, 1));
-        }
-
-    .table .tbody {
-        background: linear-gradient(to bottom right, rgba(221, 165, 178, 0.5), rgba(150, 93, 161, 0.5));
-        transition: background-color 0.3s ease-in-out;
+    /* Table Row Styles */
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
     }
 
-        .table .tbody tr:hover td {
-            background-color: rgba(216,151,166, 0.2);
+    /* Modal Header Styles */
+    .modal-header {
+        background-color: #005fc4;
+        color: #fff;
+    }
+
+    /* Modal Body Styles */
+    .modal-body {
+        background-color: #f8f9fa;
+    }
+
+    /* Modal Footer Styles */
+    .modal-footer {
+        background-color: #f8f9fa;
+    }
+
+    .btn-delete {
+        color: #fff;
+        background-color: #b85e7b;
+        padding: 5px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+        .btn-delete:hover {
+            color: #fff;
+            background-color: #ad4b6e;
         }
 
-        .table .tbody a {
-            text-decoration: none;
-            color: #445eb5;
+    .btn-edit {
+        color: #fff;
+        background-color: #7cb08c;
+        padding: 5px;
+        border-radius: 3px;
+        text-decoration: none;
+    }
+
+        .btn-edit:hover {
+            color: #fff;
+            background-color: #6d996e;
         }
 </style>
-
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -59,7 +87,7 @@
                     html += '<td>' + item.Quantity + '</td>'
                     html += '<td>' + item.Category + '</td>'
                     html += '<td>' + item.Supplier + '</td>'
-                    html += '<td><a href="#" onclick="return getProductById(' + item.ProductID + ')" >Edit Product</a> | <a href="#" onclick="return Delete(' + item.ProductID + ')" >Delete Product</a></td>'
+                    html += '<td><a href="#" onclick="return getProductById(' + item.ProductID + ')" class="btn-edit" >Edit Product</a> | <a href="#" onclick="return Delete(' + item.ProductID + ')" class="btn-delete">Delete Product</a></td>'
                     html += '</tr>'
                 });;
 
